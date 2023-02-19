@@ -1,25 +1,21 @@
 {% extends "paginas/paciente/base.html" %}
 {% block title %} Registrar Paciente {% endblock  %}
 {% block body %}
+
+{% for c in formulario %}
+  
+
 <div class="conteiner col-4 ">
-    <form enctype="multipart/form-data" action="" method="post"> {j}
-      <label for="" class="form-label">DNI</label>
-      <input type="number" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="form-label">APELLIDO</label>
-      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="form-label">NOMBRE</label>
-      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="form-label">DIRECCIÓN</label>
-      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="form-label">TELÉFONO</label>
-      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="hidden">CONTRASEÑA</label>
-      <input type="email" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="form-label">INSTAGRAM</label>
-      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <label for="" class="form-label">FACEBOOK</label>
-      <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-      <button type="submit" class="btn btn-primary">GUARDAR</button>
-    </form>
-</div>
+  <form enctype="multipart/form-data" action="" method="post"> {% csrf_token %}
+    <label for="" class="form-label">{{c.label}}</label>
+    <input type="{{c.field.widget.input_type}}" name="{{c.name}}" id="" class="form-control" placeholder="{{c.label}}" aria-describedby="helpId">
+
+    
+  
+  </div>
+  <div class="col-12 help-text">{{c.errors}}</div>
+
+{% endfor %}
+  <input name="" id="" class="btn btn-success col-4" type="submit" value="Enviar">
+</form>
 {% endblock %}
