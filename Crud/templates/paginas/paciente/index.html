@@ -1,0 +1,8 @@
+{% extends 'paginas/paciente/base.html' %}
+{% block title %}inicio{% endblock %}
+{% block body %}
+    <div class="d-grid gap-2 col-6">
+      <a name="" id="" class="btn btn-primary" href="{% url 'formRegistroPaciente' %}" role="button">Agregar Paciente</a>
+      <a name="" id="" class="btn btn-primary" href="{% url 'formEditPaciente' %}" role="button">Editar Paciente</a>
+    </div>
+{% endblock %}
