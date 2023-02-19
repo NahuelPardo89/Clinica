@@ -22,6 +22,7 @@
                     <td>{{c.nombre}}</td>
                     <td>
                         <a href="{% url 'borrarPaciente' c.dni %}" class="btn btn-danger" role="button">Borrar</a>
+                        <a href="{% url 'formEditPaciente' c.dni %}" class="btn btn-danger" role="button">Editar</a>
                     </td>
                 </tr>
                 {% endfor %}

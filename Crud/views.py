@@ -18,8 +18,13 @@ def formRegistroPaciente(request):
         return redirect('paciente')
     return render(request, 'paginas/paciente/formRegistroPaciente.html',{'formulario':formulario})
 
-def formEditPaciente(request):
-    return render(request, 'paginas/paciente/formEditPaciente.html')
+def formEditPaciente(request,dni):
+    paciente = Paciente.objects.get(dni=dni)
+    formulario = PacienteForm(request.POST or None, request.FILES or None, instance= paciente) 
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('paciente')
+    return render(request, 'paginas/paciente/formRegistroPaciente.html', {'formulario': formulario})
 
 def borrarPaciente(request, dni):
     paciente=Paciente.objects.get(dni=dni)
