@@ -8,4 +8,6 @@ urlpatterns = [
     path('paciente', views.paciente, name='paciente'),
     path('borrarPaciente/<int:dni>', views.borrarPaciente, name='borrarPaciente'),
     path('formEditPaciente/<int:dni>', views.formEditPaciente, name='formEditPaciente'),
+    path('formBuscarPaciente', views.buscarPaciente, name='buscarPaciente'),
+    
 ]

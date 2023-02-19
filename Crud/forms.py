@@ -6,3 +6,5 @@ class PacienteForm(forms.ModelForm):
         model= Paciente
         fields='__all__'
         
+class formBuscarPaciente(forms.Form):
+    dni = forms.CharField(label='DNI', max_length=8)

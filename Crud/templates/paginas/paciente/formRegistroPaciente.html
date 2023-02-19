@@ -8,7 +8,7 @@
 <div class="conteiner col-4 ">
   <form enctype="multipart/form-data" action="" method="post"> {% csrf_token %}
     <label for="" class="form-label">{{c.label}}</label>
-    <input type="{{c.field.widget.input_type}}" name="{{c.name}}" id="" class="form-control" placeholder="{{c.label}}" aria-describedby="helpId" value="{{ c.value | default:'' }}">
+    <input type="{{c.field.widget.input_type}}" name="{{c.name}}" id="{{c.label}}" class="form-control" placeholder="{{c.label}}" aria-describedby="helpId" value="{{ c.value | default:'' }}">
 
     
   

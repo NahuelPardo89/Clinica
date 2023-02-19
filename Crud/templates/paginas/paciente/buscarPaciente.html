@@ -1,0 +1,40 @@
+{% extends "paginas/paciente/base.html" %}
+{% block title %} Buscar Paciente {% endblock  %}
+
+
+{% block body %}
+  <h1>Buscar Paciente</h1>
+  <form method="get">
+    {% csrf_token %}
+    {{ formulario.dni.label_tag }} {{ formulario.dni }}
+    
+    <button type="submit">Buscar</button>
+  </form>
+  <h2>Resultados de la búsqueda:</h2>
+  <div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th scope="col">DNI</th>
+                <th scope="col">APELLIDO</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in pacientes %}
+            <tr class="">
+                <td scope="row">{{c.dni}}</td>
+                <td>{{c.apellido}}</td>
+                <td>{{c.nombre}}</td>
+                <td>
+                    <a href="{% url 'borrarPaciente' c.dni %}" class="btn btn-danger" role="button">Borrar</a>
+                    <a href="{% url 'formEditPaciente' c.dni %}" class="btn btn-danger" role="button">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
