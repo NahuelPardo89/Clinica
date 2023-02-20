@@ -3,19 +3,18 @@
 {% block body %}
 
 {% for c in formulario %}
-  
-
 <div class="conteiner col-4 ">
   <form enctype="multipart/form-data" action="" method="post"> {% csrf_token %}
-    <label for="" class="form-label">{{c.label}}</label>
-    <input type="{{c.field.widget.input_type}}" name="{{c.name}}" id="{{c.label}}" class="form-control" placeholder="{{c.label}}" aria-describedby="helpId" value="{{ c.value | default:'' }}">
-
-    
-  
+    <label for="{{c.label}}" class="form-label">{{c.label}}</label>
+    {% if c.name == "contrasena" %}
+      <input type="password" name="{{c.name}}" id="{{c.label}}" class="form-control" placeholder="{{c.label}}" aria-describedby="helpId" value="{{ c.value | default:'' }}">
+    {% else %}
+      <input type="{{c.field.widget.input_type}}" name="{{c.name}}" id="{{c.label}}" class="form-control" placeholder="{{c.label}}" aria-describedby="helpId" value="{{ c.value | default:'' }}">
+    {% endif %}
   </div>
   <div class="col-12 help-text">{{c.errors}}</div>
-
 {% endfor %}
-  <input name="" id="" class="btn btn-success col-4" type="submit" value="Enviar">
+
+<input name="" id="" class="btn btn-success col-4" type="submit" value="Enviar">
 </form>
-{% endblock %}
+{%endblock%}
